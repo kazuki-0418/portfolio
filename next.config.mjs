@@ -1,4 +1,12 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+import withVideos from "next-videos";
 
-export default nextConfig;
+const nextConfig = {
+    /* config options here */
+};
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export default {
+    ...nextConfig,
+    ...withVideos(),
+};
