@@ -3,7 +3,7 @@ import { ContactPage } from "@/components/layouts/ContactPage";
 
 export default function _() {
   return (
-    <main className="h-screen">
+    <main className="h-screen bg-black">
       <Outside blend="difference">
         <ContactPage />
       </Outside>

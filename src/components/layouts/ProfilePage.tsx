@@ -1,7 +1,36 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
+
+const seasonsImages = [
+  {
+    name: "spring",
+    src: "/seasons/spring.png",
+  },
+  {
+    name: "summer",
+    src: "/seasons/summer.png",
+  },
+  {
+    name: "autumn",
+    src: "/seasons/autumn.png",
+  },
+  {
+    name: "winter",
+    src: "/seasons/winter.png",
+  },
+];
 
 export const ProfilePage = () => {
+  const [counter, setCounter] = useState(1);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCounter((prev) => (prev === 4 ? 1 : prev + 1));
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="flex h-screen w-full justify-around absolute left-0 top-0 bg-black">
       <div className="w-1/2  flex flex-col items-center justify-center text-white">
@@ -27,14 +56,21 @@ export const ProfilePage = () => {
           </div>
         </div>
       </div>
-      <div className="w-1/2 ">
-        <Image
-          src="/seasons/spring.png"
-          alt="Cherry blossoms over a river at night with city lights in the background"
-          width={1920}
-          height={1080}
-          className="w-full h-full object-cover "
-        />
+      <div className="w-1/2 h-full overflow-hidden relative ">
+        {seasonsImages.map((season, index) => (
+          <Image
+            key={season.name}
+            src={season.src}
+            alt={season.name}
+            width={1920}
+            height={1080}
+            className={`
+            absolute top-0 right-0 w-full h-full
+            object-cover
+              ${counter - 1 === index ? "animate-fadeIn12s" : "hidden"}
+            `}
+          />
+        ))}
       </div>
     </div>
   );

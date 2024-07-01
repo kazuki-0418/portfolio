@@ -3,8 +3,8 @@ import React from "react";
 export const ContactPage = () => {
   return (
     <div>
-      <div className="bg-gray-200 absolute bottom-0 p-14 h-2/3 w-full z-0">
-        <form className="space-y-6 pl-32">
+      <div className="flex justify-start pl-48  bg-gray-200 absolute bottom-0 p-14 h-2/3 w-full z-0">
+        <form className="space-y-6 w-2/3">
           <div>
             <label
               className="block text-gray-700 text-sm font-bold mb-2 w-fit"
@@ -13,7 +13,7 @@ export const ContactPage = () => {
               ° Name
             </label>
             <input
-              className="shadow appearance-none border rounded w-1/3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="name"
               type="text"
               placeholder="Name"
@@ -27,7 +27,7 @@ export const ContactPage = () => {
               ° Email
             </label>
             <input
-              className="shadow appearance-none border rounded w-1/3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="email"
               type="email"
               placeholder="Email"
@@ -41,7 +41,7 @@ export const ContactPage = () => {
               ° Message
             </label>
             <textarea
-              className="shadow appearance-none border rounded w-1/3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="message"
               placeholder="Message"
               rows={5}
@@ -56,15 +56,15 @@ export const ContactPage = () => {
             </button>
           </div>
         </form>
-      </div>
-      <div className="flex justify-between items-end">
-        <div className="flex flex-col items-center">
-          <p className="text-sm font-bold">GitHub</p>
-          <p className="text-sm font-bold">Linked In</p>
+        <div className="flex justify-between mx-20 items-end w-full">
+          <div className="flex flex-col items-start gap-8">
+            <p className="text-sm font-light">GitHub</p>
+            <p className="text-sm font-light">LinkedIn</p>
+          </div>
+          <p className="text-sm font-light">
+            © 2024 Kazuki Jo All Rights Reserved
+          </p>
         </div>
-        <p className="text-sm font-bold">
-          © 2024 Kazuki Jo All Rights Reserved
-        </p>
       </div>
     </div>
   );

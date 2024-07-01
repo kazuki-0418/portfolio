@@ -3,7 +3,7 @@ import { AboutPage } from "@/components/layouts/AboutPage";
 
 export default function About() {
   return (
-    <main className="h-screen">
+    <main className="h-screen bg-black">
       <Outside blend="difference">
         <AboutPage />
       </Outside>

@@ -5,7 +5,7 @@ import { Menu } from "./Menu";
 
 type OutsideProps = {
   children: any;
-  blend: "difference" | "screen";
+  blend?: "difference" | "screen";
 };
 
 export const Outside: FC<OutsideProps> = ({
@@ -15,7 +15,11 @@ export const Outside: FC<OutsideProps> = ({
   return (
     <div className="p-6 h-full">
       <div
-        className={`flex justify-center items-start gap-x-56 font-light mix-blend-${blend} text-white sticky z-10`}
+        className={`
+          flex justify-center items-start gap-x-56 font-light 
+          ${blend === "difference" ? "mix-blend-difference" : ""}
+          ${blend === "screen" ? "mix-blend-screen" : ""} 
+          text-white sticky z-10`}
       >
         <div className=" flex justify-around text-sm w-1/2 h-10">
           <div className="w-36 text-start">
