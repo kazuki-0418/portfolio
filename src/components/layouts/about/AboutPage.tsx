@@ -1,6 +1,6 @@
 export const AboutPage = () => {
   return (
-    <div className="flex items-center justify-center text-white mix-blend-hard-light mt-40">
+    <div className="flex items-center justify-center text-white mix-blend-hard-light h-full">
       <div className="left-48 text-6xl transform -rotate-90 whitespace-nowrap w-fit -mr-32 ">
         I’m engineer.
       </div>

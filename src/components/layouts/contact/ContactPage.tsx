@@ -2,8 +2,8 @@ import React from "react";
 
 export const ContactPage = () => {
   return (
-    <div>
-      <div className="flex justify-start pl-48  bg-gray-200 absolute bottom-0 p-14 h-2/3 w-full z-0">
+    <div className="h-full flex items-end">
+      <div className="flex justify-start  pl-48 bg-gray-200  p-14 h-2/3 w-full z-0">
         <form className="space-y-6 w-2/3">
           <div>
             <label

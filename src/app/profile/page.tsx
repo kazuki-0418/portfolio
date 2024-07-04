@@ -1,12 +1,5 @@
-import { Outside } from "@/components/elements/Outside";
-import { ProfilePage } from "@/components/layouts/ProfilePage";
+import { Profile } from "@/components/layouts/profile";
 
-export default function _() {
-  return (
-    <main className="h-screen">
-      <Outside blend="screen">
-        <ProfilePage />
-      </Outside>
-    </main>
-  );
+export default function ProfilePage() {
+  return <Profile />;
 }

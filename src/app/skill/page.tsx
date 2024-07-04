@@ -1,12 +1,5 @@
-import { Outside } from "@/components/elements/Outside";
-import { SkillPage } from "@/components/layouts/SkillPage";
+import { Skill } from "@/components/layouts/skill";
 
-export default function Skill() {
-  return (
-    <main className="h-screen">
-      <Outside blend="difference">
-        <SkillPage />
-      </Outside>
-    </main>
-  );
+export default function SkillPage() {
+  return <Skill />;
 }

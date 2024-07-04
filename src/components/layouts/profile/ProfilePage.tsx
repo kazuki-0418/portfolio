@@ -32,7 +32,7 @@ export const ProfilePage = () => {
   }, []);
 
   return (
-    <div className="flex h-screen w-full justify-around absolute left-0 top-0 bg-black">
+    <div className="flex h-screen w-full justify-around  left-0 top-0 bg-black">
       <div className="w-1/2  flex flex-col items-center justify-center text-white">
         <div className="w-1/2">
           <h1 className="text-4xl mb-8 ">Kazuki Jo</h1>

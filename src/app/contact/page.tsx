@@ -1,12 +1,5 @@
-import { Outside } from "@/components/elements/Outside";
-import { ContactPage } from "@/components/layouts/ContactPage";
+import { Contact } from "@/components/layouts/contact";
 
-export default function _() {
-  return (
-    <main className="h-screen bg-black">
-      <Outside blend="difference">
-        <ContactPage />
-      </Outside>
-    </main>
-  );
+export default function ContactPage() {
+  return <Contact />;
 }
