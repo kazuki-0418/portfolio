@@ -55,7 +55,7 @@ export const FluidShape: React.FC<FluidShapeProps> = ({ random }) => {
   return (
     <div
       ref={canvasRef}
-      className="absolute  w-[360px] h-[360px] border opacity-80 border-black rounded-full bg-opacity-70 pointer-events-none "
+      className="absolute w-[360px] h-[360px] border opacity-80 border-black rounded-full bg-opacity-70 pointer-events-none z-20"
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,

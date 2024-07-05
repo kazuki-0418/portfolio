@@ -68,7 +68,7 @@ export const Menu = () => {
   }, []);
 
   return (
-    <div className="m-8 text-lg flex flex-col space-y-4 ">
+    <div className="m-8 text-lg flex flex-col space-y-4 z-30">
       <NavLink to="top">Top</NavLink>
       <NavLink to="about">About</NavLink>
       <NavLink to="skill">Skill</NavLink>

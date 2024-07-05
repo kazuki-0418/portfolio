@@ -3,8 +3,9 @@ import { FluidShape } from "./FluidShape";
 
 export const ContactPage = () => {
   return (
-    <div className="h-full flex items-end">
-      <div className="flex justify-start pl-48 bg-gray-200 p-14 h-2/3 w-full z-30 inset-0 relative">
+    <div className="h-full flex flex-col items-end bg-gray-200">
+      <div className="relative top-0 left-0 w-full h-1/3 bg-black" />
+      <div className="flex justify-start pl-48  p-14 h-2/3 w-full z-20 inset-0 relative">
         <FluidShape random={0.01 * (Math.floor(Math.random() * 6) + 3)} />
         <FluidShape random={0.01 * (Math.floor(Math.random() * 6) + 2)} />
         <FluidShape random={0.01 * (Math.floor(Math.random() * 6) + 2)} />
@@ -61,7 +62,7 @@ export const ContactPage = () => {
             </button>
           </div>
         </form>
-        <div className="flex justify-between mx-20 items-end w-full">
+        <div className="flex justify-between mx-20 items-end w-full text-black">
           <div className="flex flex-col items-start gap-8">
             <p className="text-sm font-light">GitHub</p>
             <p className="text-sm font-light">LinkedIn</p>
