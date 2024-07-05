@@ -1,10 +1,15 @@
 import React from "react";
+import { FluidShape } from "./FluidShape";
 
 export const ContactPage = () => {
   return (
     <div className="h-full flex items-end">
-      <div className="flex justify-start  pl-48 bg-gray-200  p-14 h-2/3 w-full z-0">
-        <form className="space-y-6 w-2/3">
+      <div className="flex justify-start pl-48 bg-gray-200 p-14 h-2/3 w-full z-30 inset-0 relative">
+        <FluidShape random={0.01 * (Math.floor(Math.random() * 6) + 3)} />
+        <FluidShape random={0.01 * (Math.floor(Math.random() * 6) + 2)} />
+        <FluidShape random={0.01 * (Math.floor(Math.random() * 6) + 2)} />
+
+        <form className="space-y-6 w-2/3 z-20">
           <div>
             <label
               className="block text-gray-700 text-sm font-bold mb-2 w-fit"
