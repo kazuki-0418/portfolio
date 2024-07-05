@@ -21,9 +21,9 @@ export const Outside: FC<OutsideProps> = ({ children }) => {
             hash === "#skill"
               ? "bg-blend-difference text-black"
               : "bg-blend-screen text-white"
-          } fixed top-4 right-4 z-10 w-full`}
+          } fixed top-4 right-4 w-full z-30`}
       >
-        <div className=" flex justify-around text-sm w-1/2 h-10 ">
+        <div className=" flex justify-around text-sm w-1/2 h-10  ">
           <div className="w-36 text-start ">
             My engineering skills are like this.
           </div>

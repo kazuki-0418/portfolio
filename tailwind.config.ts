@@ -15,7 +15,7 @@ const config: Config = {
           "custom-gradient": `radial-gradient(#f2f2f2 65%, transparent 66%), 
                               conic-gradient(#fff 0% 60%, transparent 60% 100%)`,
       },
-
+      
       transitionDelay: {
         "0s": "0ms",
         '4s': '4000ms',
