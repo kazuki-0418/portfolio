@@ -136,8 +136,8 @@ export const NavigationMenu = () => {
         <NavLink to="skill" closeMenu={closeMenu}>
           Skill
         </NavLink>
-        <NavLink to="profile" closeMenu={closeMenu}>
-          Profile
+        <NavLink to="experience" closeMenu={closeMenu}>
+          Experience
         </NavLink>
         <NavLink to="contact" closeMenu={closeMenu}>
           Contact
@@ -163,8 +163,8 @@ export const NavigationMenu = () => {
       <NavLink to="skill" closeMenu={closeMenu}>
         Skill
       </NavLink>
-      <NavLink to="profile" closeMenu={closeMenu}>
-        Profile
+      <NavLink to="experience" closeMenu={closeMenu}>
+        Experience
       </NavLink>
       <NavLink to="contact" closeMenu={closeMenu}>
         Contact

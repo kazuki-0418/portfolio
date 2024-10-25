@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { PieChart } from "../PieChart";
-import { SkillCardProps } from "../SkillCard";
+import { SkillCardProps } from "../SkillPage";
 
 export const Language: FC<SkillCardProps> = ({
   category,

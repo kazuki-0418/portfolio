@@ -3,11 +3,12 @@
 import { Outside } from "@/components/elements/Outside";
 import { About } from "@/components/layouts/about";
 import { Skill } from "@/components/layouts/skill";
-import { Profile } from "@/components/layouts/profile";
+import { Experience } from "@/components/layouts/experience";
 import { Contact } from "@/components/layouts/contact";
 import { Top } from "@/components/layouts/top";
 import { RecoilRoot } from "recoil";
 import { MediaQueryProvider } from "@/hooks/useMediaQuery";
+import { Toast } from "@/components/elements/Toast";
 
 export default function _() {
   return (
@@ -17,9 +18,10 @@ export default function _() {
           <Top />
           <About />
           <Skill />
-          <Profile />
+          <Experience />
           <Contact />
         </Outside>
+        <Toast />
       </MediaQueryProvider>
     </RecoilRoot>
   );

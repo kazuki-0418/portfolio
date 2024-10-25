@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { PieChart } from "../PieChart";
-import { SkillCardProps } from "../SkillCard";
+import { SkillCardProps } from "../SkillPage";
 
 export const Db: FC<SkillCardProps> = ({ category, items, description }) => {
   return (

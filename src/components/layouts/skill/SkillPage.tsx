@@ -1,18 +1,29 @@
 "use client";
-import { SkillItem } from "./SkillCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { Navigation } from "swiper/modules";
-import { useIsDesktop, useIsMobile } from "@/hooks/useMediaQuery";
+import { useIsDesktop } from "@/hooks/useMediaQuery";
 import { Db } from "./SkillCards/Db";
 import { Nodejs } from "./SkillCards/Nodejs";
 import { Language } from "./SkillCards/Language";
 import { Frontend } from "./SkillCards/Frontend";
 import { Tool } from "./SkillCards/Tool";
 import "./SkillCards/Swiper.css";
+
+export type SkillCardProps = {
+  category: string;
+  items: SkillItem[];
+  description?: string;
+};
+
+export type SkillItem = {
+  name: string;
+  src: string;
+  percentage: number;
+};
 
 type SkillCategory = {
   category: string;
@@ -132,7 +143,8 @@ export const SkillPage = () => {
   if (isDesktop === false)
     return (
       <Swiper
-        navigation={true}
+        modules={[Navigation]}
+        navigation
         className="flex flex-wrap justify-center items-center"
         breakpoints={{
           840: {
@@ -170,11 +182,7 @@ export const SkillPage = () => {
             <Tool {...skills[2]} />
           </SwiperSlide>
         </div>
-        {/* <div className="flex flex-wrap justify-center ">
-    <Language {...skills[0]} />
-    <Frontend {...skills[1]} />
-    <Tool {...skills[2]} />
-  </div> */}
+
         <div className="flex justify-center w-full">
           <div className="flex justify-center w-full">
             <SwiperSlide
@@ -196,10 +204,6 @@ export const SkillPage = () => {
               <Nodejs {...skills[4]} />
             </SwiperSlide>
           </div>
-          {/* <div className="flex justify-center w-full">
-      <Nodejs {...skills[4]} />
-      <Db {...skills[3]} />
-    </div> */}
         </div>
       </Swiper>
     );
