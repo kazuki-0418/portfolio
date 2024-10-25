@@ -1,6 +1,29 @@
 "use client";
-import { SkillCard, SkillItem } from "./SkillCard";
-import { PieChart } from "./PieChart";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+import { Navigation } from "swiper/modules";
+import { useIsDesktop } from "@/hooks/useMediaQuery";
+import { Db } from "./SkillCards/Db";
+import { Nodejs } from "./SkillCards/Nodejs";
+import { Language } from "./SkillCards/Language";
+import { Frontend } from "./SkillCards/Frontend";
+import { Tool } from "./SkillCards/Tool";
+import "./SkillCards/Swiper.css";
+
+export type SkillCardProps = {
+  category: string;
+  items: SkillItem[];
+  description?: string;
+};
+
+export type SkillItem = {
+  name: string;
+  src: string;
+  percentage: number;
+};
 
 type SkillCategory = {
   category: string;
@@ -87,6 +110,18 @@ const skills: SkillCategory[] = [
       "2 and a half years of development experience mainly in front endWe develop applications",
   },
   {
+    category: "back end",
+    items: [
+      {
+        name: "Node.js",
+        src: "/skill_icons/back_end/node_js.png",
+        percentage: 80,
+      },
+    ],
+    description:
+      "2 and a half years of development experience mainly in front endWe develop",
+  },
+  {
     category: "DB",
     items: [
       { name: "MYSQL", src: "/skill_icons/db/my_sql.png", percentage: 60 },
@@ -103,36 +138,87 @@ const skills: SkillCategory[] = [
 ];
 
 export const SkillPage = () => {
+  const isDesktop = useIsDesktop();
+
+  if (isDesktop === false)
+    return (
+      <Swiper
+        modules={[Navigation]}
+        navigation
+        className="flex flex-wrap justify-center items-center"
+        breakpoints={{
+          840: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+        }}
+      >
+        <div>
+          <SwiperSlide
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              justifyItems: "center",
+            }}
+          >
+            <Language {...skills[0]} />
+          </SwiperSlide>
+          <SwiperSlide
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              justifyItems: "center",
+            }}
+          >
+            <Frontend {...skills[1]} />
+          </SwiperSlide>
+          <SwiperSlide
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              justifyItems: "center",
+            }}
+          >
+            <Tool {...skills[2]} />
+          </SwiperSlide>
+        </div>
+
+        <div className="flex justify-center w-full">
+          <div className="flex justify-center w-full">
+            <SwiperSlide
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                justifyItems: "center",
+              }}
+            >
+              <Db {...skills[3]} />
+            </SwiperSlide>
+            <SwiperSlide
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                justifyItems: "center",
+              }}
+            >
+              <Nodejs {...skills[4]} />
+            </SwiperSlide>
+          </div>
+        </div>
+      </Swiper>
+    );
+
   return (
     <>
       <div className="flex flex-wrap justify-center ">
-        {skills.slice(0, 3).map((skill, index) => (
-          <SkillCard key={index} {...skill} />
-        ))}
+        <Language {...skills[0]} />
+        <Frontend {...skills[1]} />
+        <Tool {...skills[2]} />
       </div>
       <div className="flex justify-center w-full">
-        <div className="bg-gray-200 rounded-lg shadow-lg p-6 m-4 w-80">
-          <h2 className="text-2xl font-light mb-4 text-black">back end</h2>
-          <PieChart
-            name={"Node.js"}
-            src={"/skill_icons/back_end/node_js.png"}
-            percentage={80}
-          />
-          <p className="text-sm text-gray-700">
-            2 and a half years of development experience mainly in front end We
-            develop applications
-          </p>
-        </div>
-        <div className="bg-gray-200 p-6 m-4 max-w-2xl rounded-lg shadow-lg flex flex-col items-start">
-          <div className="text-2xl font-light text-black">DB</div>
-          <div className="flex space-x-8 items-center h-full">
-            <div className="flex gap-10 mb-4 ml-2 ">
-              {skills[3].items.map((item) => (
-                <PieChart key={item.name} {...item} />
-              ))}
-            </div>
-            <div className="text-sm text-gray-700">{skills[3].description}</div>
-          </div>
+        <div className="flex justify-center w-full">
+          <Db {...skills[3]} />
+          <Nodejs {...skills[4]} />
         </div>
       </div>
     </>

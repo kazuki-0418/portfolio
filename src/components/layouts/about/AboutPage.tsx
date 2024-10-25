@@ -2,7 +2,7 @@ export const AboutPage = () => {
   return (
     <div className="flex items-center justify-center text-white mix-blend-hard-light h-full">
       <div className="left-48 text-6xl transform -rotate-90 whitespace-nowrap w-fit -mr-32 ">
-        I’m engineer.
+        I’m an engineer.
       </div>
       <div className="border-l border-white h-96 mx-8"></div>
       <div className="text-xl w-[20ch] border-r-[5px] border-solid border-black overflow-hidden whitespace-nowrap text-[#00aec9]  leading-[1.4] font-bold animate-[typing_3s_steps(18),blink_.4s_step-end_infinite_alternate]">
