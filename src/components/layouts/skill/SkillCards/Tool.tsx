@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { PieChart } from "../PieChart";
-import { SkillCardProps } from "../SkillCard";
+import { SkillCardProps } from "../SkillPage";
 
 export const Tool: FC<SkillCardProps> = ({ category, items, description }) => {
   return (

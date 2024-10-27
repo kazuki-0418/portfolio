@@ -59,7 +59,7 @@ const skills: SkillCategory[] = [
       },
     ],
     description:
-      "2 and a half years of development experience mainly in front endWe develop applications",
+      "Proficient in core web technologies including HTML5, CSS3, and JavaScript, with expertise in TypeScript for type-safe development. Experience with Dart and Python for cross-platform and backend development.",
   },
   {
     category: "front end",
@@ -96,7 +96,7 @@ const skills: SkillCategory[] = [
       },
     ],
     description:
-      "2 and a half years of development experience mainly in front endWe develop applications",
+      "Specialized in modern frontend development using React and Next.js with Tailwind CSS for efficient styling. Experienced in various frameworks including Remix.js, Svelte, and Flutter for creating responsive applications.",
   },
   {
     category: "Tool",
@@ -107,7 +107,7 @@ const skills: SkillCategory[] = [
       { name: "Figma", src: "/skill_icons/tool/figma.png", percentage: 100 },
     ],
     description:
-      "2 and a half years of development experience mainly in front endWe develop applications",
+      "Experienced in version control with GitHub, containerization with Docker, and collaborative workflows using Notion and Figma for efficient project management and design processes.",
   },
   {
     category: "back end",
@@ -119,7 +119,7 @@ const skills: SkillCategory[] = [
       },
     ],
     description:
-      "2 and a half years of development experience mainly in front endWe develop",
+      "Capable of server-side development using Node.js, enabling full-stack integration and API development.",
   },
   {
     category: "DB",
@@ -133,7 +133,7 @@ const skills: SkillCategory[] = [
       },
     ],
     description:
-      "2 and a half years of development experience mainly in front endWe develop applications",
+      "Skilled in MySQL database design and optimization, ensuring efficient data management and query performance.",
   },
 ];
 
@@ -192,7 +192,7 @@ export const SkillPage = () => {
                 justifyItems: "center",
               }}
             >
-              <Db {...skills[3]} />
+              <Nodejs {...skills[3]} />
             </SwiperSlide>
             <SwiperSlide
               style={{
@@ -217,8 +217,8 @@ export const SkillPage = () => {
       </div>
       <div className="flex justify-center w-full">
         <div className="flex justify-center w-full">
-          <Db {...skills[3]} />
-          <Nodejs {...skills[4]} />
+          <Nodejs {...skills[3]} />
+          <Db {...skills[4]} />
         </div>
       </div>
     </>

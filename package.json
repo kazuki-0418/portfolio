@@ -19,9 +19,11 @@
     "react-dom": "^18",
     "react-hook-form": "^7.53.1",
     "react-hot-toast": "^2.4.1",
+    "react-intersection-observer": "^9.13.1",
     "react-scroll": "^1.9.0",
     "recoil": "^0.7.7",
     "swiper": "^11.1.14",
+    "typeit-react": "^2.7.7",
     "zod": "^3.23.8"
   },
   "devDependencies": {
