@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Portfolio Site Features
 
-## Getting Started
+## 🏠 Top Page
 
-First, run the development server:
+- Implemented an interactive hamburger menu for smooth navigation
+- Enhanced visual impact with an immersive background video
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 👤 About Page
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Self-introduction displayed with typing animation effects
+- Created engaging presentation to capture visitors' attention
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 💪 Skill Page
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Skills organized and displayed by sections
+- Systematic introduction of each technology stack
 
-## Learn More
+## 📚 Experience Page
 
-To learn more about Next.js, take a look at the following resources:
+- Detailed description of past projects and work experience
+- Chronological presentation of project achievements and professional experience
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📧 Contact Page
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Simple and user-friendly contact form
+- Implemented inquiry functionality with the following fields:
+  - Name
+  - Email address
+  - Message
