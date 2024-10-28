@@ -4,6 +4,7 @@ export const Top = () => {
   return (
     <div className="h-screen w-screen" id="top">
       <video
+        aria-disabled
         src={require("/public/top.mov")}
         autoPlay
         muted
