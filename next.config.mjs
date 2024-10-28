@@ -2,11 +2,11 @@
 import withVideos from "next-videos";
 
 const nextConfig = {
-    /* config options here */
+  /* config options here */
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-    ...nextConfig,
-    ...withVideos(),
+  ...nextConfig,
+  ...withVideos(),
 };
