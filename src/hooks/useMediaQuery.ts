@@ -3,7 +3,7 @@
 import { useEffect, useCallback, useMemo, useRef } from "react";
 import { atom, useRecoilValue, useSetRecoilState } from "recoil";
 
-// 定数を分離して管理
+// Separate and manage constants
 const BREAKPOINTS = {
   MOBILE: "(max-width: 768px)",
   DESKTOP: "(min-width: 1200px)",
@@ -12,7 +12,7 @@ const BREAKPOINTS = {
 type BreakpointKey = keyof typeof BREAKPOINTS;
 type MediaQueryState = Record<Lowercase<BreakpointKey>, boolean>;
 
-// Recoilのステート定義
+// State Definitions for Recoil
 const mediaQueryState = atom<MediaQueryState>({
   key: "mediaQueryState",
   default: {
@@ -21,17 +21,17 @@ const mediaQueryState = atom<MediaQueryState>({
   },
 });
 
-// メディアクエリの監視を行うカスタムフック（最適化版）
+// Custom hooks to monitor media queries (optimized version)
 const useMediaQuery = (query: string, callback: (matches: boolean) => void) => {
-  // 最新のコールバックを参照するためのref
+  // ref to refer to the latest callback
   const callbackRef = useRef(callback);
 
-  // コールバックの更新
+  // Update callbacks
   useEffect(() => {
     callbackRef.current = callback;
   }, [callback]);
 
-  // メモ化されたイベントハンドラー
+  // Memorized event handler
   const handler = useCallback((e: MediaQueryListEvent) => {
     callbackRef.current(e.matches);
   }, []);
@@ -39,12 +39,12 @@ const useMediaQuery = (query: string, callback: (matches: boolean) => void) => {
   useEffect(() => {
     const mql = window.matchMedia(query);
 
-    // 初期状態の設定
+    // Initial Settings
     if (mql.matches !== undefined) {
       callbackRef.current(mql.matches);
     }
 
-    // イベントリスナーの登録
+    // Registering an event listener
     mql.addEventListener("change", handler);
 
     return () => {
@@ -53,15 +53,15 @@ const useMediaQuery = (query: string, callback: (matches: boolean) => void) => {
   }, [query, handler]);
 };
 
-// メディアクエリの更新を一括で処理するカスタムフック
+// Custom hooks to handle media query updates in bulk
 const useMediaQueries = () => {
   const setMediaQueryState = useSetRecoilState(mediaQueryState);
 
-  // ステート更新関数をメモ化
+  // Memorize state update function
   const updateState = useCallback(
     (key: Lowercase<BreakpointKey>, matches: boolean) => {
       setMediaQueryState((prev) => {
-        // 値が変更された場合のみ新しいオブジェクトを返す
+        // return a new object only if the value has changed
         if (prev[key] === matches) return prev;
         return { ...prev, [key]: matches };
       });
@@ -69,7 +69,7 @@ const useMediaQueries = () => {
     [setMediaQueryState]
   );
 
-  // メモ化されたコールバック関数
+  // Memorized callback function
   const mobileCallback = useCallback(
     (matches: boolean) => {
       updateState("mobile", matches);
@@ -92,21 +92,21 @@ interface MediaQueryProviderProps {
 }
 
 export const MediaQueryProvider = ({ children }: MediaQueryProviderProps) => {
-  // コールバック関数を取得
+  // Get callback function
   const { mobileCallback, desktopCallback } = useMediaQueries();
 
-  // メモ化されたブレイクポイント
+  // Memorized breakpoints
   const mobileQuery = useMemo(() => BREAKPOINTS.MOBILE, []);
   const desktopQuery = useMemo(() => BREAKPOINTS.DESKTOP, []);
 
-  // メディアクエリの監視を設定
+  // Set up media query monitoring
   useMediaQuery(mobileQuery, mobileCallback);
   useMediaQuery(desktopQuery, desktopCallback);
 
   return children;
 };
 
-// 最適化されたカスタムフック
+// Optimized custom hooks
 export const useIsMobile = () => {
   const state = useRecoilValue(mediaQueryState);
   return state.mobile;

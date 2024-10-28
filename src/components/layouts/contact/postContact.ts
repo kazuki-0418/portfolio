@@ -8,8 +8,8 @@ export const onFormPostContact = async (data: FormData) => {
     const response = await fetch("/api/contact", {
       method: "POST",
       headers: {
-        Accept: "application/json, text/plain", //レスポンスのコンテンツを定義
-        "Content-Type": "application/json", // JSON形式のデーターをサーバーに送信
+        Accept: "application/json, text/plain", //Define response content
+        "Content-Type": "application/json", // Send data in JSON format to server
       },
       body: JSON.stringify(data),
     });

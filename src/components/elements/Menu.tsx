@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Link, Events, scroller } from "react-scroll";
 import { useIsMobile } from "@/hooks/useMediaQuery";
 
-// メニューのスタイル
+// Styles for the hamburger menu
 
 const styles = {
   bmBurgerButton: {
@@ -88,7 +88,7 @@ export const NavigationMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = useIsMobile();
 
-  // スクロールイベントの設定
+  // Scroll to the hash when the page is loaded
   useEffect(() => {
     if (typeof window === "undefined") return;
     const hash = window.location.hash.replace("#", "");
@@ -123,7 +123,7 @@ export const NavigationMenu = () => {
     setIsOpen(false);
   };
 
-  // PCサイズの時のナビゲーション
+  // Navigation at PC size
   if (!isMobile) {
     return (
       <div className=" m-4 text-lg flex flex-col space-y-4 z-30">
@@ -146,7 +146,7 @@ export const NavigationMenu = () => {
     );
   }
 
-  // タブレットサイズ以下の時のハンバーガーメニュー
+  // Navigation at mobile size
   return (
     <Menu
       right

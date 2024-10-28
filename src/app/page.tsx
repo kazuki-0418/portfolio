@@ -10,7 +10,7 @@ import { RecoilRoot } from "recoil";
 import { MediaQueryProvider } from "@/hooks/useMediaQuery";
 import { Toast } from "@/components/elements/Toast";
 
-export default function _() {
+export default function App() {
   return (
     <RecoilRoot>
       <MediaQueryProvider>
