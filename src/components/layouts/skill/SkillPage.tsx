@@ -59,7 +59,7 @@ const skills: SkillCategory[] = [
       },
     ],
     description:
-      "Proficient in core web technologies including HTML5, CSS3, and JavaScript, with expertise in TypeScript for type-safe development. Experience with Dart and Python for cross-platform and backend development.",
+      "Experienced in core web languages with TypeScript, Dart, and Python.",
   },
   {
     category: "front end",
@@ -96,7 +96,7 @@ const skills: SkillCategory[] = [
       },
     ],
     description:
-      "Specialized in modern frontend development using React and Next.js with Tailwind CSS for efficient styling. Experienced in various frameworks including Remix.js, Svelte, and Flutter for creating responsive applications.",
+      "Focused on React and Next.js development with experience in other frameworks.",
   },
   {
     category: "Tool",
@@ -106,8 +106,7 @@ const skills: SkillCategory[] = [
       { name: "Notion", src: "/skill_icons/tool/notion.png", percentage: 100 },
       { name: "Figma", src: "/skill_icons/tool/figma.png", percentage: 100 },
     ],
-    description:
-      "Experienced in version control with GitHub, containerization with Docker, and collaborative workflows using Notion and Figma for efficient project management and design processes.",
+    description: "Proficient in development workflows and design tools.",
   },
   {
     category: "back end",
@@ -132,8 +131,7 @@ const skills: SkillCategory[] = [
         percentage: 80,
       },
     ],
-    description:
-      "Skilled in MySQL database design and optimization, ensuring efficient data management and query performance.",
+    description: "Experience with both SQL and NoSQL databases.",
   },
 ];
 

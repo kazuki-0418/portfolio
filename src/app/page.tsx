@@ -9,20 +9,23 @@ import { Top } from "@/components/layouts/top";
 import { RecoilRoot } from "recoil";
 import { MediaQueryProvider } from "@/hooks/useMediaQuery";
 import { Toast } from "@/components/elements/Toast";
+import { Suspense } from "react";
 
 export default function App() {
   return (
-    <RecoilRoot>
-      <MediaQueryProvider>
-        <Outside>
-          <Top />
-          <About />
-          <Skill />
-          <Experience />
-          <Contact />
-        </Outside>
-        <Toast />
-      </MediaQueryProvider>
-    </RecoilRoot>
+    <Suspense>
+      <RecoilRoot>
+        <MediaQueryProvider>
+          <Outside>
+            <Top />
+            <About />
+            <Skill />
+            <Experience />
+            <Contact />
+          </Outside>
+          <Toast />
+        </MediaQueryProvider>
+      </RecoilRoot>
+    </Suspense>
   );
 }

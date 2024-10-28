@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, Suspense } from "react";
+import { FC } from "react";
 import { useHash } from "@/hooks/useHash";
 import { NavigationMenu } from "./Menu";
 import { useIsMobile } from "@/hooks/useMediaQuery";
@@ -13,42 +13,40 @@ export const Outside: FC<OutsideProps> = ({ children }) => {
   const hash = useHash();
   const isMobile = useIsMobile();
   return (
-    <Suspense>
-      <div className="h-full bg-black">
-        <div
-          className={`
+    <div className="h-full bg-black">
+      <div
+        className={`
           flex justify-end items-start gap-x-56 font-light 
           ${
             hash === "#skill"
               ? "bg-blend-difference text-black"
               : "bg-blend-screen text-white"
           } fixed top-4 right-4 w-full z-30`}
-        >
-          {!isMobile && (
-            <div className=" flex justify-around text-sm w-1/2 h-10  ">
-              <div className="w-36 text-start ">
-                My engineering skills are like this.
-              </div>
-              <div className="w-32 text-start">
-                I’m an engineer born in Japan.
-              </div>
+      >
+        {!isMobile && (
+          <div className=" flex justify-around text-sm w-1/2 h-10  ">
+            <div className="w-36 text-start ">
+              My engineering skills are like this.
             </div>
-          )}
-          <NavigationMenu />
-          {!isMobile && (
-            <div
-              className={`absolute left-8 top-96 text-sm -rotate-90 ${
-                hash === "#contact" || hash === "#skill"
-                  ? "text-black"
-                  : "text-white"
-              }`}
-            >
-              jo.kazuki.com
+            <div className="w-32 text-start">
+              I’m an engineer born in Japan.
             </div>
-          )}
-        </div>
-        {children}
+          </div>
+        )}
+        <NavigationMenu />
+        {!isMobile && (
+          <div
+            className={`absolute left-8 top-96 text-sm -rotate-90 ${
+              hash === "#contact" || hash === "#skill"
+                ? "text-black"
+                : "text-white"
+            }`}
+          >
+            jo.kazuki.com
+          </div>
+        )}
       </div>
-    </Suspense>
+      {children}
+    </div>
   );
 };
