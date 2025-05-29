@@ -12,17 +12,25 @@ import { Suspense } from "react";
 
 export default function App() {
   return (
-    <>
+    <Suspense
+      fallback={
+        <div>
+          <div className="h-screen w-screen flex justify-center items-center">
+            <div className="text-2xl font-bold">Loading...</div>
+          </div>
+        </div>
+      }
+    >
       <RecoilRoot>
-          <Outside>
-            <Top />
-            <About />
-            <Skill />
-            <Experience />
-            <Contact />
-          </Outside>
-          <Toast />
+        <Outside>
+          <Top />
+          <About />
+          <Skill />
+          <Experience />
+          <Contact />
+        </Outside>
+        <Toast />
       </RecoilRoot>
-    </>
+    </Suspense>
   );
 }
