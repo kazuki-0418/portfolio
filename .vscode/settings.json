@@ -1,5 +1,18 @@
 {
-    "cSpell.words": [
-        "swiper"
-    ]
+  // Biome拡張機能を無効化
+  "biome.enabled": false,
+  
+  // または特定のファイルタイプで無効化
+  "[javascript]": {
+    "biome.enabled": false
+  },
+  "[typescript]": {
+    "biome.enabled": false
+  },
+  "[javascriptreact]": {
+    "biome.enabled": false
+  },
+  "[typescriptreact]": {
+    "biome.enabled": false
+  },
 }

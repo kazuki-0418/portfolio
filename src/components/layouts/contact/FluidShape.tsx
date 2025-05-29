@@ -8,49 +8,85 @@ type FluidShapeProps = {
 export const FluidShape: React.FC<FluidShapeProps> = ({ random }) => {
   const canvasRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const animationRef = useRef<number>(null);
+  const mouseRef = useRef({ x: 0, y: 0 });
+  const shapeRef = useRef({ x: 0, y: 0 });
+  const timeRef = useRef(0);
 
   useEffect(() => {
     const fluidShape = canvasRef.current;
-    const container = fluidShape?.parentElement;
-    if (!fluidShape || !container) return;
+    if (!fluidShape) return;
 
-    let mouseX = container.offsetWidth / 2;
-    let mouseY = container.offsetHeight / 2;
-    let shapeX = mouseX;
-    let shapeY = mouseY;
-    let time = 0;
+    // コンテナを取得（親要素またはウィンドウ全体）
+    const container = fluidShape.closest("[data-container]") || document.body;
+
+    // 初期位置を設定
+    const initializePosition = () => {
+      const rect = container.getBoundingClientRect();
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      mouseRef.current = { x: centerX, y: centerY };
+      shapeRef.current = { x: centerX, y: centerY };
+      setPosition({ x: centerX, y: centerY });
+    };
+
+    // 少し遅延して初期化（DOMが完全に準備されるのを待つ）
+    const initTimer = setTimeout(initializePosition, 100);
 
     const handleMouseMove = (e: MouseEvent) => {
-      const rect = container.getBoundingClientRect();
-      mouseX = e.clientX - rect.left;
-      mouseY = e.clientY - rect.top;
+      if (container === document.body) {
+        // document.body の場合はウィンドウ座標をそのまま使用
+        mouseRef.current.x = e.clientX;
+        mouseRef.current.y = e.clientY;
+      } else {
+        // 特定のコンテナ内での相対座標
+        const rect = container.getBoundingClientRect();
+        mouseRef.current.x = e.clientX - rect.left;
+        mouseRef.current.y = e.clientY - rect.top;
+      }
     };
 
-    container.addEventListener("mousemove", handleMouseMove);
+    // マウスイベントをdocumentに追加（より確実にキャッチ）
+    document.addEventListener("mousemove", handleMouseMove);
 
     const animate = () => {
-      let distX = mouseX - shapeX;
-      let distY = mouseY - shapeY;
+      const { x: mouseX, y: mouseY } = mouseRef.current;
+      const { x: shapeX, y: shapeY } = shapeRef.current;
 
-      shapeX += distX * 0.05;
-      shapeY += distY * random;
+      // マウスに向かって移動（イージング）
+      const distX = mouseX - shapeX;
+      const distY = mouseY - shapeY;
 
-      time += random;
-      let wobbleX = Math.sin(time) * 20;
-      let wobbleY = Math.cos(time * 0.8) * 20;
+      const easing = 0.8;
+      shapeRef.current.x += distX * easing;
+      shapeRef.current.y += distY * (random * 0.1 + 0.01); // randomの影響を調整
 
-      setPosition({ x: shapeX + wobbleX, y: shapeY + wobbleY });
+      // 時間ベースのゆらぎ
+      timeRef.current += random * 0.02 + 0.01;
+      const wobbleX = Math.sin(timeRef.current) * 15;
+      const wobbleY = Math.cos(timeRef.current * 0.8) * 15;
 
-      requestAnimationFrame(animate);
+      // 最終位置を設定
+      setPosition({
+        x: shapeRef.current.x + wobbleX,
+        y: shapeRef.current.y + wobbleY,
+      });
+
+      animationRef.current = requestAnimationFrame(animate);
     };
 
-    animate();
+    // アニメーション開始
+    animationRef.current = requestAnimationFrame(animate);
 
     return () => {
-      container.removeEventListener("mousemove", handleMouseMove);
+      clearTimeout(initTimer);
+      document.removeEventListener("mousemove", handleMouseMove);
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [random]);
 
   return (
     <div
@@ -60,7 +96,7 @@ export const FluidShape: React.FC<FluidShapeProps> = ({ random }) => {
         left: `${position.x}px`,
         top: `${position.y}px`,
         transform: `translate(-50%, -50%) scale(${
-          1 + Math.sin(Date.now() * 0.003) * 0.2
+          1 + Math.sin(Date.now() * 0.003 + random * 10) * 0.1
         })`,
       }}
     />

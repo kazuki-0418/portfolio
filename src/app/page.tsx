@@ -7,15 +7,13 @@ import { Experience } from "@/components/layouts/experience";
 import { Contact } from "@/components/layouts/contact";
 import { Top } from "@/components/layouts/top";
 import { RecoilRoot } from "recoil";
-import { MediaQueryProvider } from "@/hooks/useMediaQuery";
 import { Toast } from "@/components/elements/Toast";
 import { Suspense } from "react";
 
 export default function App() {
   return (
-    <Suspense>
+    <>
       <RecoilRoot>
-        <MediaQueryProvider>
           <Outside>
             <Top />
             <About />
@@ -24,8 +22,7 @@ export default function App() {
             <Contact />
           </Outside>
           <Toast />
-        </MediaQueryProvider>
       </RecoilRoot>
-    </Suspense>
+    </>
   );
 }

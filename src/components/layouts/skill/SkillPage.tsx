@@ -1,11 +1,11 @@
 "use client";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { Navigation } from "swiper/modules";
-import { useIsDesktop } from "@/hooks/useMediaQuery";
 import { Db } from "./SkillCards/Db";
 import { Nodejs } from "./SkillCards/Nodejs";
 import { Language } from "./SkillCards/Language";
@@ -136,89 +136,70 @@ const skills: SkillCategory[] = [
 ];
 
 export const SkillPage = () => {
-  const isDesktop = useIsDesktop();
-
-  if (isDesktop === false)
-    return (
-      <Swiper
-        modules={[Navigation]}
-        navigation
-        className="flex flex-wrap justify-center items-center"
-        breakpoints={{
-          840: {
-            slidesPerView: 2,
-            spaceBetween: 10,
-          },
-        }}
-      >
-        <div>
-          <SwiperSlide
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              justifyItems: "center",
-            }}
-          >
+  return (
+    <div className="w-full">
+      {/* モバイル表示: Swiperスライダー (lg未満で表示) */}
+      <div className="lg:hidden">
+        <Swiper
+          modules={[Navigation]}
+          navigation
+          slidesPerView={1}
+          spaceBetween={20}
+          breakpoints={{
+            640: {
+              slidesPerView: 1,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 10,
+            },
+          }}
+          className="w-full"
+        >
+          <SwiperSlide className="flex justify-center items-center">
             <Language {...skills[0]} />
           </SwiperSlide>
-          <SwiperSlide
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              justifyItems: "center",
-            }}
-          >
+          <SwiperSlide className="flex justify-center items-center">
             <Frontend {...skills[1]} />
           </SwiperSlide>
-          <SwiperSlide
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              justifyItems: "center",
-            }}
-          >
+          <SwiperSlide className="flex justify-center items-center">
             <Tool {...skills[2]} />
           </SwiperSlide>
-        </div>
+          <SwiperSlide className="flex justify-center items-center">
+            <Nodejs {...skills[3]} />
+          </SwiperSlide>
+          <SwiperSlide className="flex justify-center items-center">
+            <Db {...skills[4]} />
+          </SwiperSlide>
+        </Swiper>
+      </div>
 
-        <div className="flex justify-center w-full">
-          <div className="flex justify-center w-full">
-            <SwiperSlide
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                justifyItems: "center",
-              }}
-            >
-              <Nodejs {...skills[3]} />
-            </SwiperSlide>
-            <SwiperSlide
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                justifyItems: "center",
-              }}
-            >
-              <Nodejs {...skills[4]} />
-            </SwiperSlide>
+      {/* デスクトップ表示: グリッドレイアウト (lg以上で表示) */}
+      <div className="hidden lg:block">
+        {/* 最初の行: Language, Frontend, Tool */}
+        <div className="flex flex-wrap justify-center gap-4 mb-8">
+          <div className="flex-shrink-0">
+            <Language {...skills[0]} />
+          </div>
+          <div className="flex-shrink-0">
+            <Frontend {...skills[1]} />
+          </div>
+          <div className="flex-shrink-0">
+            <Tool {...skills[2]} />
           </div>
         </div>
-      </Swiper>
-    );
 
-  return (
-    <>
-      <div className="flex flex-wrap justify-center ">
-        <Language {...skills[0]} />
-        <Frontend {...skills[1]} />
-        <Tool {...skills[2]} />
-      </div>
-      <div className="flex justify-center w-full">
-        <div className="flex justify-center w-full">
-          <Nodejs {...skills[3]} />
-          <Db {...skills[4]} />
+        {/* 2番目の行: Node.js, DB */}
+        <div className="flex justify-center gap-4">
+          <div className="flex-shrink-0">
+            <Nodejs {...skills[3]} />
+          </div>
+          <div className="flex-shrink-0">
+            <Db {...skills[4]} />
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
